@@ -3,37 +3,44 @@
     	{
     		"month": "January",
     		"energy": 65,
-    		"water": 28
+    		"water": 28,
+    		"gaz": 40
     	},
     	{
     		"month": "February",
     		"energy": 59,
-    		"water": 48
+    		"water": 48,
+    		"gaz": 40
     	},
     	{
     		"month": "March",
     		"energy": 80,
-    		"water": 40
+    		"water": 40,
+    		"gaz": 40
     	},
     	{
     		"month": "April",
     		"energy": 81,
-    		"water": 19
+    		"water": 19,
+    		"gaz": 40
     	},
     	{
     		"month": "May",
     		"energy": 56,
-    		"water": 86
+    		"water": 86,
+    		"gaz": 40
     	},
     	{
     		"month": "June",
     		"energy": 55,
-    		"water": 27
+    		"water": 27,
+    		"gaz": 40
     	},
     	{
     		"month": "July",
     		"energy": 40,
-    		"water": 90
+    		"water": 90,
+    		"gaz": 40
     	}
     ]
 }
