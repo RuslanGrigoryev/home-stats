@@ -37,6 +37,18 @@ module.exports = function(grunt) {
               ]
             }
           }
+        },
+        jshint: {
+            files: ['Gruntfile.js', 'js/**/*.js'],
+            options: {
+                jshintrc: '.jshintrc'
+            }
+        },
+        jscs: {
+            src: ['<%= jshint.files %>'],
+            options: {
+                config: '.jscsrc'
+            }
         }
 
     });
@@ -44,7 +56,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-jscs');
 
-    grunt.registerTask('default', ['concat', 'sass', 'cssmin']);
+    grunt.registerTask('default', ['jshint','jscs', 'concat', 'sass', 'cssmin']);
 
 };

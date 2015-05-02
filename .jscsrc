@@ -1,0 +1,7 @@
+{
+	"preset": "home-stats",
+	"disallowMultipleVarDecl": null,
+	"requireMultipleVarDecl": true,
+	"requireCurlyBraces": ["if", "else", "for", "while", "do", "try", "catch", "case"]
+	"validateIndentation": "\t",
+}
