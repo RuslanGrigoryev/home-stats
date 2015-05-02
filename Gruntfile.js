@@ -10,6 +10,7 @@ module.exports = function(grunt) {
                     'bower_components/angular-route/angular-route.min.js',
                     'bower_components/Chart.js/Chart.min.js',
                     'js/app.js',
+                    'js/factories/Factory.js',
                     'js/controllers/ChartController.js',
                     'js/controllers/MainController.js'
                 ],

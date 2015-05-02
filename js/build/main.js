@@ -304,7 +304,35 @@ app.config(function($routeProvider) {
 });
 
 
-app.controller('ChartController', function($scope) {
+app.factory('dataFactory', function($http, $q){
+	return {
+
+		'getAllData': function(){
+
+			var deffered = $q.defer();
+
+			var pp = $http.get('temp/data.json')
+
+				.success(function(data){
+					
+					deffered.resolve(data);
+					
+				})
+				
+				.error(function(msg){
+					
+					deffered.reject(msg);
+					
+				});
+				
+			return deffered.promise;
+			
+		}
+		
+	};
+	
+});
+app.controller('ChartController', function($scope, dataFactory) {
 
 	var data = {
 	    labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -328,8 +356,18 @@ app.controller('ChartController', function($scope) {
 	    ]
 	};
 
-	var ctx = document.getElementById("home_stats_pie_chart").getContext("2d");
-	var myBarChart = new Chart(ctx).Bar(data);
+	var data = dataFactory.getAllData();
+
+	data.then(function(data) {
+
+		$scope.data = data;
+		
+		var ctx = document.getElementById("home_stats_pie_chart").getContext("2d");
+		
+		var myBarChart = new Chart(ctx).Bar(data);
+
+	}, function(msg, code){});
+
 
 });
 app.controller('MainController', function($scope) {
