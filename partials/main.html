@@ -1,1 +1,41 @@
 <h1>Home stats SPA</h1>
+
+<table class="table table-hover">
+
+	<thead>
+		
+		<th>Месяц</th>
+
+		<th>Электроэнергия</th>
+
+		<th>Вода</th>
+		
+	</thead>
+
+	<tbody>
+		
+		<tr ng-repeat="item in data.data">
+
+			<td>
+				
+				{{item.month}}
+
+			</td>
+
+			<td>
+				
+				{{item.energy}}
+
+			</td>
+
+			<td>
+				
+				{{item.water}}
+
+			</td>
+
+		</tr>
+
+	</tbody>
+
+</table>
