@@ -1,6 +1,14 @@
-<form class="container form-inline" method="POST" action="/php/get.php" name="sendDataForm" ng-init="successData = false">
+<form class="container form-inline" method="POST" action="/php/calc_indicators.php" name="sendDataForm" ng-init="successData = false">
 
 	<div class="row">
+
+		<div class="col-xs-1">
+			
+			<select name="month" ng-model="month">
+				<option ng-repeat="month in monthes">{{month}}</option>
+			</select>
+
+		</div>
 
 		<div class="col-xs-3">
 			
@@ -8,7 +16,7 @@
 			type="text" 
 			name="energy" 
 			class="form-control" 
-			placeholder="Enter energy indicators" 
+			placeholder="Введите показатели электроэнергии" 
 			ng-model="energy"
 			required>
 
@@ -20,7 +28,7 @@
 			type="text" 
 			name="water" 
 			class="form-control" 
-			placeholder="Enter water indicators"
+			placeholder="Введите показатели воды"
 			ng-model="water" 
 			required>
 
@@ -32,13 +40,13 @@
 			type="text" 
 			name="gaz" 
 			class="form-control" 
-			placeholder="Enter gaz indicators"
+			placeholder="Введите показатели газа"
 			ng-model="gaz" 
 			required>
 
 		</div>
 
-		<div class="col-xs-3">
+		<div class="col-xs-2">
 			
 			<input 
 			type="submit" 

@@ -1,12 +1,30 @@
 app.controller('MainController', function($scope, $rootScope, $http, dataFactory) {
 
-	var data = dataFactory.getAllData();
+	var data = dataFactory.getAllIndicators();
 
 	data.then(function(data) {
  
-		$scope.data = data;
+		$scope.indicators = [];
 
-	}, function(msg, code){});
+		data.forEach(function(key) {
+
+			$scope.indicators.push(
+				{
+					"month": key.month,
+					"energy": parseFloat(key.energy),
+					"water": parseFloat(key.water),
+					"gaz": parseFloat(key.gaz)
+				}
+			);
+
+		});
+		
+		$scope.successData = true;
+
+	}, function(msg, code){
+
+
+	});
 
 	$http.get("/php/fetch_tariff.php")
 	.success(function(data){

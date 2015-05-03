@@ -1,11 +1,11 @@
 app.factory('dataFactory', function($http, $q){
 	return {
 
-		'getAllData': function(){
+		'getAllIndicators': function(){
 
 			var deffered = $q.defer();
 
-			var pp = $http.get('temp/data.json')
+			var pp = $http.get('/php/fetch_indicators.php')
 
 				.success(function(data){
 					
@@ -18,7 +18,7 @@ app.factory('dataFactory', function($http, $q){
 					deffered.reject(msg);
 					
 				});
-				
+
 			return deffered.promise;
 			
 		}

@@ -317,11 +317,11 @@ app.config(function($routeProvider) {
 app.factory('dataFactory', function($http, $q){
 	return {
 
-		'getAllData': function(){
+		'getAllIndicators': function(){
 
 			var deffered = $q.defer();
 
-			var pp = $http.get('temp/data.json')
+			var pp = $http.get('/php/fetch_indicators.php')
 
 				.success(function(data){
 					
@@ -334,7 +334,7 @@ app.factory('dataFactory', function($http, $q){
 					deffered.reject(msg);
 					
 				});
-				
+
 			return deffered.promise;
 			
 		}
@@ -344,8 +344,7 @@ app.factory('dataFactory', function($http, $q){
 });
 app.controller('ChartController', function($scope, dataFactory) {
 
-	var data = dataFactory.getAllData();
-
+	var data = dataFactory.getAllIndicators();
 
 	data.then(function(data) {
 
@@ -386,7 +385,7 @@ app.controller('ChartController', function($scope, dataFactory) {
 
 		    ]
 		};
-
+		
 		var myBarChart = new Chart(ctx).Bar(chart_data);
 
 	}, function(msg, code){});
@@ -399,31 +398,31 @@ app.controller('ChartController', function($scope, dataFactory) {
 		var arr = data,
 			newArr = [];
 
-		for ( var key in arr.data ) {
+		for ( var key in arr ) {
 
 			switch (field) {
 
 				case "month":
 
-				newArr.push(arr.data[key].month);
+				newArr.push(arr[key].month);
 
 				break;
 
 				case "energy":
 
-				newArr.push(arr.data[key].energy);
+				newArr.push(arr[key].energy);
 
 				break;
 
 				case "water":
 
-				newArr.push(arr.data[key].water);
+				newArr.push(arr[key].water);
 
 				break;
 
 				case "gaz":
 
-				newArr.push(arr.data[key].gaz);
+				newArr.push(arr[key].gaz);
 
 				break;
 			}
@@ -437,13 +436,31 @@ app.controller('ChartController', function($scope, dataFactory) {
 });
 app.controller('MainController', function($scope, $rootScope, $http, dataFactory) {
 
-	var data = dataFactory.getAllData();
+	var data = dataFactory.getAllIndicators();
 
 	data.then(function(data) {
  
-		$scope.data = data;
+		$scope.indicators = [];
 
-	}, function(msg, code){});
+		data.forEach(function(key) {
+
+			$scope.indicators.push(
+				{
+					"month": key.month,
+					"energy": parseFloat(key.energy),
+					"water": parseFloat(key.water),
+					"gaz": parseFloat(key.gaz)
+				}
+			);
+
+		});
+		
+		$scope.successData = true;
+
+	}, function(msg, code){
+
+
+	});
 
 	$http.get("/php/fetch_tariff.php")
 	.success(function(data){
@@ -468,13 +485,15 @@ app.controller('MainController', function($scope, $rootScope, $http, dataFactory
 });
 app.controller('AddNewController', function($scope, $http) {
 
+	$scope.monthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 	$scope.sendNewData = function(event) {
 
 		event.preventDefault();
 		
 		$http({
 		    method: 'POST',
-		    url: '/php/get.php',
+		    url: '/php/calc_indicators.php',
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    transformRequest: function(obj) {
 		        var str = [];
@@ -482,7 +501,7 @@ app.controller('AddNewController', function($scope, $http) {
 		        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
 		        return str.join("&");
 		    },
-		    data: {energy: $scope.energy, water: $scope.water, gaz: $scope.gaz}
+		    data: {month: $scope.month, energy: $scope.energy, water: $scope.water, gaz: $scope.gaz}
 		}).success(function () {
 
 			$scope.successData = true;

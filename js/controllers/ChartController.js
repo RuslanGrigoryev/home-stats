@@ -1,7 +1,6 @@
 app.controller('ChartController', function($scope, dataFactory) {
 
-	var data = dataFactory.getAllData();
-
+	var data = dataFactory.getAllIndicators();
 
 	data.then(function(data) {
 
@@ -42,7 +41,7 @@ app.controller('ChartController', function($scope, dataFactory) {
 
 		    ]
 		};
-
+		
 		var myBarChart = new Chart(ctx).Bar(chart_data);
 
 	}, function(msg, code){});
@@ -55,31 +54,31 @@ app.controller('ChartController', function($scope, dataFactory) {
 		var arr = data,
 			newArr = [];
 
-		for ( var key in arr.data ) {
+		for ( var key in arr ) {
 
 			switch (field) {
 
 				case "month":
 
-				newArr.push(arr.data[key].month);
+				newArr.push(arr[key].month);
 
 				break;
 
 				case "energy":
 
-				newArr.push(arr.data[key].energy);
+				newArr.push(arr[key].energy);
 
 				break;
 
 				case "water":
 
-				newArr.push(arr.data[key].water);
+				newArr.push(arr[key].water);
 
 				break;
 
 				case "gaz":
 
-				newArr.push(arr.data[key].gaz);
+				newArr.push(arr[key].gaz);
 
 				break;
 			}

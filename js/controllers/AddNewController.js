@@ -1,12 +1,14 @@
 app.controller('AddNewController', function($scope, $http) {
 
+	$scope.monthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 	$scope.sendNewData = function(event) {
 
 		event.preventDefault();
 		
 		$http({
 		    method: 'POST',
-		    url: '/php/get.php',
+		    url: '/php/calc_indicators.php',
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		    transformRequest: function(obj) {
 		        var str = [];
@@ -14,7 +16,7 @@ app.controller('AddNewController', function($scope, $http) {
 		        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
 		        return str.join("&");
 		    },
-		    data: {energy: $scope.energy, water: $scope.water, gaz: $scope.gaz}
+		    data: {month: $scope.month, energy: $scope.energy, water: $scope.water, gaz: $scope.gaz}
 		}).success(function () {
 
 			$scope.successData = true;
