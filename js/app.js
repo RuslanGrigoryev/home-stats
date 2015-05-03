@@ -16,6 +16,11 @@ app.config(function($routeProvider) {
 			controller: 'MainController'
 
 		})
+		.when('/new', {
+			templateUrl: 'partials/new.html',
+
+			controller: 'AddNewController'
+		})
 		.otherwise({
 
 			redirectTo: "/"

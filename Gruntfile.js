@@ -12,7 +12,8 @@ module.exports = function(grunt) {
                     'js/app.js',
                     'js/factories/Factory.js',
                     'js/controllers/ChartController.js',
-                    'js/controllers/MainController.js'
+                    'js/controllers/MainController.js',
+                    'js/controllers/AddNewController.js'
                 ],
                 dest: 'js/build/main.js',
             }
@@ -60,5 +61,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jscs');
 
     grunt.registerTask('default', ['jshint','jscs', 'concat', 'sass', 'cssmin']);
+    grunt.registerTask('dev', ['concat', 'sass']);
 
 };

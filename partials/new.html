@@ -1,0 +1,64 @@
+<form class="container form-inline" method="POST" action="/php/get.php" name="sendDataForm" ng-init="successData = false">
+
+	<div class="row">
+
+		<div class="col-xs-3">
+			
+			<input 
+			type="text" 
+			name="energy" 
+			class="form-control" 
+			placeholder="Enter energy indicators" 
+			ng-model="energy"
+			required>
+
+		</div>
+
+		<div class="col-xs-3">
+			
+			<input 
+			type="text" 
+			name="water" 
+			class="form-control" 
+			placeholder="Enter water indicators"
+			ng-model="water" 
+			required>
+
+		</div>
+
+		<div class="col-xs-3">
+			
+			<input 
+			type="text" 
+			name="gaz" 
+			class="form-control" 
+			placeholder="Enter gaz indicators"
+			ng-model="gaz" 
+			required>
+
+		</div>
+
+		<div class="col-xs-3">
+			
+			<input 
+			type="submit" 
+			class="btn btn-primary" 
+			value="Рассчитать"
+			ng-click="sendNewData($event)"
+			ng-disabled="sendDataForm.$invalid || energy == 0 || water == 0 || gaz == 0" />
+
+		</div>
+
+	</div>
+
+	<div class="row" ng-show="successData">
+
+		<div class="col-xs-12">
+			
+			<p>Successful send data</p>
+
+		</div>
+	
+	</div>
+
+</div>
