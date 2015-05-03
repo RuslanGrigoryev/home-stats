@@ -435,15 +435,35 @@ app.controller('ChartController', function($scope, dataFactory) {
 	}
 
 });
-app.controller('MainController', function($scope, dataFactory) {
+app.controller('MainController', function($scope, $rootScope, $http, dataFactory) {
 
 	var data = dataFactory.getAllData();
 
 	data.then(function(data) {
-
+ 
 		$scope.data = data;
 
 	}, function(msg, code){});
+
+	$http.get("/php/fetch_tariff.php")
+	.success(function(data){
+
+	    $scope.tariffs = {
+
+	    	'energy': parseFloat( data[0].energy ),
+	    	'water': parseFloat( data[0].water),
+	    	'gaz': parseFloat( data[0].gaz)
+
+	    };
+
+	    $rootScope.tariffs = $scope.tariffs;
+
+	})
+	.error(function() {
+
+	    $scope.tariffs = "error in fetching data";
+
+	});
 
 });
 app.controller('AddNewController', function($scope, $http) {
@@ -474,27 +494,9 @@ app.controller('AddNewController', function($scope, $http) {
 	};
 
 });
-app.controller('TariffsController', function($scope, $http) {
+app.controller('TariffsController', function($scope, $rootScope, $http) {
 
-	$http.get("/php/fetch_tariff.php")
-	.success(function(data){
-
-		$scope.showLoading = false;
-
-	    $scope.tariffs = {
-
-	    	'energy': data[0].energy,
-	    	'water': data[0].water,
-	    	'gaz': data[0].gaz
-
-	    };
-
-	})
-	.error(function() {
-
-	    $scope.data_tariffs = "error in fetching data";
-
-	});
+	$scope.tariffs = $rootScope.tariffs;
 
 	$scope.saveNewTariffs = function(event) {
 

@@ -1,24 +1,6 @@
-app.controller('TariffsController', function($scope, $http) {
+app.controller('TariffsController', function($scope, $rootScope, $http) {
 
-	$http.get("/php/fetch_tariff.php")
-	.success(function(data){
-
-		$scope.showLoading = false;
-
-	    $scope.tariffs = {
-
-	    	'energy': data[0].energy,
-	    	'water': data[0].water,
-	    	'gaz': data[0].gaz
-
-	    };
-
-	})
-	.error(function() {
-
-	    $scope.data_tariffs = "error in fetching data";
-
-	});
+	$scope.tariffs = $rootScope.tariffs;
 
 	$scope.saveNewTariffs = function(event) {
 

@@ -11,6 +11,8 @@
 		<th>Вода</th>
 
 		<th>Газ</th>
+
+		<th>Итого</th>
 		
 	</thead>
 
@@ -26,19 +28,25 @@
 
 			<td>
 				
-				{{item.energy}}
+				{{item.energy * tariffs.energy}} грн.
 
 			</td>
 
 			<td>
 				
-				{{item.water}}
+				{{item.water * tariffs.water}} грн.
 
 			</td>
 
 			<td>
 				
-				{{item.gaz}}
+				{{item.gaz * tariffs.gaz}} грн.
+
+			</td>
+
+			<td>
+				
+				{{item.energy * tariffs.energy + item.water * tariffs.water + item.gaz * tariffs.gaz}} грн.
 
 			</td>
 
