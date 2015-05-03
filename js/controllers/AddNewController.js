@@ -23,6 +23,6 @@ app.controller('AddNewController', function($scope, $http) {
 
 		});
 
-	}
+	};
 
 });

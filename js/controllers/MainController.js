@@ -8,4 +8,4 @@ app.controller('MainController', function($scope, dataFactory) {
 
 	}, function(msg, code){});
 
-})
+});

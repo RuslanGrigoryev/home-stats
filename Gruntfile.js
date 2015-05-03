@@ -13,7 +13,8 @@ module.exports = function(grunt) {
                     'js/factories/Factory.js',
                     'js/controllers/ChartController.js',
                     'js/controllers/MainController.js',
-                    'js/controllers/AddNewController.js'
+                    'js/controllers/AddNewController.js',
+                    'js/controllers/TariffsController.js'
                 ],
                 dest: 'js/build/main.js',
             }
@@ -40,7 +41,7 @@ module.exports = function(grunt) {
           }
         },
         jshint: {
-            files: ['Gruntfile.js', 'js/**/*.js'],
+            files: ['Gruntfile.js', 'js/controllers/*.js', 'js/factories/*.js'],
             options: {
                 jshintrc: '.jshintrc'
             }
@@ -61,6 +62,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jscs');
 
     grunt.registerTask('default', ['jshint','jscs', 'concat', 'sass', 'cssmin']);
-    grunt.registerTask('dev', ['concat', 'sass']);
+    grunt.registerTask('dev', ['jshint', 'concat', 'sass']);
 
 };

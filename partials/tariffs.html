@@ -1,0 +1,101 @@
+<div class="container">
+
+	<div class="row">
+		
+		<div class="col-xs-3">
+			
+			<p>Электроэнергия</p>
+
+		</div>
+		<div class="col-xs-3">
+			
+			<p>Вода</p>
+
+		</div>
+		<div class="col-xs-3">
+			
+			<p>Газ</p>
+
+		</div>
+		<div class="col-xs-3">
+			
+			
+
+		</div>
+
+	</div>
+	
+	<div class="row" ng-show="!successData">
+		
+		<div class="col-xs-3">
+			
+			<p>{{tariffs.energy}}</p>
+
+		</div>
+		<div class="col-xs-3">
+			
+			<p>{{tariffs.water}}</p>
+
+		</div>
+		<div class="col-xs-3">
+			
+			<p>{{tariffs.gaz}}</p>
+
+		</div>
+		<div class="col-xs-3">
+			
+			<button type="button" class="btn btn-warning" ng-click="successData = true">Изменить тариф</button>
+
+		</div>
+
+	</div>
+
+	<form 
+	class="row" 
+	method="POST" 
+	action="/php/calc_tariff.php" 
+	name="sendTariffForm" 
+	ng-show="successData" 
+	ng-init="successData = false">
+		
+		<div class="col-xs-3">
+			
+			<input 
+			type="text" 
+			class="form-control" 
+			name="energy" 
+			ng-model="tariffs.energy"
+			placeholder="Введите новый тариф на электроэнергию">
+
+		</div>
+		<div class="col-xs-3">
+			
+			<input 
+			type="text" 
+			class="form-control" 
+			name="water"
+			ng-model="tariffs.water" 
+			placeholder="Введите новый тариф на воду">
+
+		</div>
+		<div class="col-xs-3">
+			
+			<input 
+			type="text" 
+			class="form-control" 
+			name="gaz"
+			ng-model="tariffs.gaz" 
+			placeholder="Введите новый тариф на газ">
+
+		</div>
+		<div class="col-xs-3">
+			
+			<button type="submit" class="btn btn-success" ng-click="saveNewTariffs($event);successData = false">Сохранить тариф</button>
+
+			<button type="button" class="btn btn-primary" ng-click="successData = false">Отмена</button>
+
+		</div>
+
+	</div>
+
+</div>

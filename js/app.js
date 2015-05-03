@@ -21,6 +21,11 @@ app.config(function($routeProvider) {
 
 			controller: 'AddNewController'
 		})
+		.when('/tariffs', {
+			templateUrl: 'partials/tariffs.html',
+
+			controller: 'TariffsController'
+		})
 		.otherwise({
 
 			redirectTo: "/"

@@ -300,6 +300,11 @@ app.config(function($routeProvider) {
 
 			controller: 'AddNewController'
 		})
+		.when('/tariffs', {
+			templateUrl: 'partials/tariffs.html',
+
+			controller: 'TariffsController'
+		})
 		.otherwise({
 
 			redirectTo: "/"
@@ -440,7 +445,7 @@ app.controller('MainController', function($scope, dataFactory) {
 
 	}, function(msg, code){});
 
-})
+});
 app.controller('AddNewController', function($scope, $http) {
 
 	$scope.sendNewData = function(event) {
@@ -466,6 +471,23 @@ app.controller('AddNewController', function($scope, $http) {
 
 		});
 
-	}
+	};
+
+});
+app.controller('TariffsController', function($scope) {
+
+	$scope.tariffs = {
+
+		'energy': 0.45,
+		'water': 6.20,
+		'gaz': 200.29
+
+	};
+
+	$scope.saveNewTariffs = function(event) {
+
+		event.preventDefault();
+
+	};
 
 });
