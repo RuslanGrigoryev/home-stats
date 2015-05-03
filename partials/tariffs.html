@@ -24,8 +24,18 @@
 		</div>
 
 	</div>
+
+	<div class="row" ng-init="showLoading = true" ng-show="showLoading">
+			
+		<div class="col-xs-12 text-center">
+			
+			<img src="/img/loading.gif">
+
+		</div>	
+
+	</div>
 	
-	<div class="row" ng-show="!successData">
+	<div class="row" ng-show="!successData && !showLoading">
 		
 		<div class="col-xs-3">
 			
