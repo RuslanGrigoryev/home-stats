@@ -357,7 +357,7 @@ app.controller('ChartController', function($scope, dataFactory) {
 		    datasets: [
 
 		        {
-		            label: "ElectroEnergy",
+		            label: "Электроэнергия (кВт)",
 		            fillColor: "rgba(220,220,220,0.5)",
 		            strokeColor: "rgba(220,220,220,0.8)",
 		            highlightFill: "rgba(220,220,220,0.75)",
@@ -366,7 +366,7 @@ app.controller('ChartController', function($scope, dataFactory) {
 		        },
 
 		        {
-		            label: "Water",
+		            label: "Вода (куб)",
 		            fillColor: "rgba(52, 152, 219, 0.5)",
 		            strokeColor: "rgba(52, 152, 219, 0.8)",
 		            highlightFill: "rgba(52, 152, 219, 0.75)",
@@ -375,7 +375,7 @@ app.controller('ChartController', function($scope, dataFactory) {
 		        },
 
 		        {
-		            label: "Gaz",
+		            label: "Газ(куб)",
 		            fillColor: "rgba(255,51,51,0.5)",
 		            strokeColor: "rgba(255,51,51,0.8)",
 		            highlightFill: "rgba(255,51,51,0.75)",
@@ -386,7 +386,15 @@ app.controller('ChartController', function($scope, dataFactory) {
 		    ]
 		};
 		
-		var myBarChart = new Chart(ctx).Bar(chart_data);
+		var myBarChart = new Chart(ctx).Bar(chart_data, {
+
+			barValueSpacing : 35,
+
+			barDatasetSpacing : 10,
+
+			multiTooltipTemplate: "<%= datasetLabel %>: <%= value %>"
+
+		});
 
 	}, function(msg, code){});
 
