@@ -7,3 +7,9 @@
 
 .b-table_main td:last-child {
   color: red; }
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  width: 20%; }
+
+.b-table_total {
+  font-weight: bold; }

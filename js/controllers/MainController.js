@@ -6,6 +6,14 @@ app.controller('MainController', function($scope, $rootScope, $http, dataFactory
  
 		$scope.indicators = [];
 
+		$scope.total = {
+
+			'energy' : 0,
+			'water': 0,
+			'gaz': 0
+
+		};
+
 		data.forEach(function(key) {
 
 			$scope.indicators.push(
@@ -16,6 +24,12 @@ app.controller('MainController', function($scope, $rootScope, $http, dataFactory
 					"gaz": parseFloat(key.gaz)
 				}
 			);
+
+			$scope.total.energy += parseFloat(key.energy);
+			
+			$scope.total.water += parseFloat(key.water);
+			
+			$scope.total.gaz += parseFloat(key.gaz);
 
 		});
 		

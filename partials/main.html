@@ -62,33 +62,33 @@
 
 </table>
 
-<table class="table table-stripped b-table_total">
+<table class="table table-bordered b-table_total" ng-show="successData">
 	
 	<tbody>
 		
 		<td>
 			
-			
+			<p>За год:</p>
 
 		</td>
 		<td>
 			
-			
+			{{total.energy * tariffs.energy}} грн.
 
 		</td>
 		<td>
 			
-			
+			{{total.water * tariffs.water}} грн.
 
 		</td>
 		<td>
 			
-			
+			{{total.gaz * tariffs.gaz}} грн.
 
 		</td>
 		<td>
 			
-			
+			{{total.energy * tariffs.energy + total.water * tariffs.water + total.gaz * tariffs.gaz}} грн.
 
 		</td>
 
