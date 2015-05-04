@@ -2,6 +2,8 @@ app.controller('AddNewController', function($scope, $http) {
 
 	$scope.monthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+	$scope.month = $scope.monthes[0];
+
 	$scope.currentDate = new Date().toLocaleString();
 
 	$scope.sendNewData = function(event) {
