@@ -6,7 +6,7 @@ app.controller('MainController', function($scope, $rootScope, $http, dataFactory
  
 		$scope.indicators = [];
 
-		$scope.total = { 
+		$scope.total = {
 
 			'energy' : 0,
 			'water': 0,
