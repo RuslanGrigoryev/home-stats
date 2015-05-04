@@ -99,4 +99,16 @@ app.controller('ChartController', function($scope, dataFactory) {
 
 	}
 
+	$scope.printChart = function(){
+
+	    var win=window.open();
+
+	    win.document.write("<br><img src='"+document.getElementById("home_stats_pie_chart").toDataURL()+"'/>");
+
+	    win.print();
+
+	    win.location.reload();
+
+	};
+
 });
