@@ -52,6 +52,8 @@ app.controller('ChartController', function($scope, dataFactory) {
 
 		});
 
+		$scope.successData = true;
+
 	}, function(msg, code){});
 
 	// @description: function, which will return new array with necessary fields
