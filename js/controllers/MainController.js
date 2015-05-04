@@ -18,6 +18,7 @@ app.controller('MainController', function($scope, $rootScope, $http, dataFactory
 
 			$scope.indicators.push(
 				{
+					"date": key.date,
 					"month": key.month,
 					"energy": parseFloat(key.energy),
 					"water": parseFloat(key.water),

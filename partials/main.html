@@ -10,7 +10,9 @@
 
 	<thead>
 		
-		<th>Месяц</th>
+		<th>Дата добавления</th>
+
+		<th>Расчетный месяц</th>
 
 		<th>Электроэнергия</th>
 
@@ -26,6 +28,12 @@
 		
 		<tr ng-repeat="item in indicators">
 
+			<td>
+				
+				{{item.date}}
+
+			</td>
+			
 			<td>
 				
 				{{item.month}}
@@ -62,10 +70,11 @@
 
 </table>
 
-<table class="table table-bordered b-table_total" ng-show="successData">
+<table class="table b-table_total" ng-show="successData">
 	
 	<tbody>
 		
+		<td></td>
 		<td>
 			
 			<p>За год:</p>

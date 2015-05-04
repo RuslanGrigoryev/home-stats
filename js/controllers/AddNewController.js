@@ -2,6 +2,8 @@ app.controller('AddNewController', function($scope, $http) {
 
 	$scope.monthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+	$scope.currentDate = new Date().toLocaleString();
+
 	$scope.sendNewData = function(event) {
 
 		event.preventDefault();
@@ -16,7 +18,7 @@ app.controller('AddNewController', function($scope, $http) {
 		        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
 		        return str.join("&");
 		    },
-		    data: {month: $scope.month, energy: $scope.energy, water: $scope.water, gaz: $scope.gaz}
+		    data: {date: $scope.currentDate, month: $scope.month, energy: $scope.energy, water: $scope.water, gaz: $scope.gaz}
 		}).success(function () {
 
 			$scope.successData = true;
