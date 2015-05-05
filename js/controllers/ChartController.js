@@ -46,8 +46,6 @@ app.controller('ChartController', function($scope, dataFactory) {
 
 			barValueSpacing : 35,
 
-			barDatasetSpacing : 10,
-
 			multiTooltipTemplate: "<%= datasetLabel %>: <%= value %>"
 
 		});

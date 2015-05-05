@@ -20,7 +20,7 @@ app.controller('AddNewController', function($scope, $http) {
 		        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
 		        return str.join("&");
 		    },
-		    data: {date: $scope.currentDate, month: $scope.month, energy: $scope.energy, water: $scope.water, gaz: $scope.gaz}
+		    data: {date: $scope.currentDate, month: $scope.month, energy: $scope.energy, water: $scope.water, gaz: $scope.gaz, year: new Date().getFullYear()}
 		}).success(function () {
 
 			$scope.successData = true;
